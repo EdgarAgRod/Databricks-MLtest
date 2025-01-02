@@ -48,7 +48,7 @@ mlflow.set_registry_uri("databricks-uc")
 
 # Specify the catalog and schema to use. You must have USE_CATALOG privilege on the catalog and USE_SCHEMA, CREATE_TABLE, and CREATE_MODEL privileges on the schema.
 # Change the catalog and schema here if necessary.
-CATALOG_NAME = "main"
+CATALOG_NAME = "workspace"
 SCHEMA_NAME = "default"
 
 # COMMAND ----------
@@ -76,6 +76,10 @@ spark.sql(f"DROP TABLE IF EXISTS {red_wine_table}")
 spark.sql(f"DROP TABLE IF EXISTS {white_wine_table}")
 white_wine.write.saveAsTable(f"{CATALOG_NAME}.{SCHEMA_NAME}.white_wine")
 red_wine.write.saveAsTable(f"{CATALOG_NAME}.{SCHEMA_NAME}.red_wine")
+
+# COMMAND ----------
+
+print(type(white_wine))
 
 # COMMAND ----------
 
